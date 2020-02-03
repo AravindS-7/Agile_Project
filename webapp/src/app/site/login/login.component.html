@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <div class="row justify-content-center mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-4" id="container">
+      <div class="list-group">
+        <div class="list-group-item" id="list-group">
+          <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+            <h2 class="form-row font-weight-normal text-dark">
+              Login
+            </h2>
+            <div class="form-row">
+              <div class="col">
+                <div class="alert alert-danger" *ngIf="!isLoginValid">
+                  Invalid User-Id/Password
+                </div>
+                <div class="alert alert-warning" *ngIf="loginStatus==='Pending'">
+                  Registration not approved !
+                </div>
+                <div class="alert alert-danger" *ngIf="loginStatus==='Denied'">
+                  Invalid UserId/Password
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col text-dark">
+                <label for="userId">User-Id</label>
+                <input type="text" class="form-control" id="userId" ngModel name="userId" #userId="ngModel"
+                  placeholder="Enter User Id" required>
+                <div class="text-danger" *ngIf="userId.touched && !userId.valid">
+                  UserId is required
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col text-dark">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" ngModel name="password" #password="ngModel"
+                  placeholder="Enter Password" required>
+                <div class="text-danger" *ngIf="password.touched && !password.valid">
+                  Password is required
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-4">
+                <button type="submit" class="btn btn-primary buttons border-0"
+                  [disabled]="!loginForm.valid">Login</button>
+              </div>
+              <div class="col-8 text-right text-dark">
+                <small>New here?<a routerLink="/register"> Register</a></small>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

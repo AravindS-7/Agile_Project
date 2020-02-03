@@ -1,0 +1,119 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>Edit Product</h2><br>
+        </div>
+    </div>
+    <div class="row ml-auto mr-auto" *ngIf="productEdited">
+        <div class="alert alert-success col-12">
+            Product details saved successfully.
+        </div>
+    </div>
+    <form [formGroup]="editForm" (submit)="onSubmitEditForm(editForm)" *ngIf="!productEdited">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" class="form-control" formControlName="name">
+                    <small class="text-danger"
+                        *ngIf="editForm.get('name').touched && editForm.get('name').hasError('required')">Name is
+                        required</small>
+                    <small class="text-danger"
+                        *ngIf="editForm.get('name').touched && editForm.get('name').hasError('maxlength')">Name
+                        cannot exceed 20 characters</small>
+                </div>
+            </div>
+            <div class="form-group col-12 col-md-3">
+                <label for="type">Product Type</label>
+                <input type="text" name="type" class="form-control" formControlName="type">
+            </div>
+            <div class="form-group col-12 col-md-3">
+                <div class="form-group">
+                    <label for="code">Product Code</label>
+                    <input type="text" name="code" id="code" class="form-control" formControlName="code">
+                    <small class="text-danger"
+                        *ngIf="editForm.get('code').touched && editForm.get('code').hasError('required')">Product code is
+                        required</small>
+                    
+                </div>
+
+            </div>
+            <div class="form-group col-12 col-md-3">
+                <div class="form-group">
+                    <label for="brand">Brand</label>
+                    <input type="text" name="brand" id="brand" class="form-control" formControlName="brand">
+                    <small class="text-danger"
+                        *ngIf="editForm.get('brand').touched && editForm.get('brand').hasError('required')">Product brand is
+                        required</small>
+                    
+                </div>
+
+            </div>
+          
+        </div>
+        
+        <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="image">URL</label>
+                        <input type="text" name="image" id="image" class="form-control" formControlName="image">
+                        <small class="text-danger"
+                            *ngIf="editForm.get('image').touched && editForm.get('image').hasError('required')">Image URL is
+                            required</small>
+                        
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="form-group col-12 col-md-3">
+                <label for="ratePerQuantity">Rate Per Quantity</label>
+                <input type="text" name="ratePerQuantity" id="ratePerQuantity" class="form-control" formControlName="ratePerQuantity">
+                <small class="text-danger"
+                    *ngIf="editForm.get('ratePerQuantity').touched && editForm.get('ratePerQuantity').hasError('required')">Rate per quantity
+                    is
+                    required</small>
+                <small class="text-danger"
+                    *ngIf="editForm.get('ratePerQuantity').touched && editForm.get('ratePerQuantity').hasError('pattern')">Rate
+                    should be a number</small>
+            </div>
+
+            <div class="form-group col-12 col-md-3">
+                <label for="stockCount">Stock Count</label>
+                <input type="text" name="stockCount" id="stockCount" class="form-control"
+                    formControlName="stockCount">
+            </div>
+            <div class="form-group col-12 col-md-3">
+                <label for="aisle">Aisle</label>
+                <input type="text" name="aisle" id="aisle" class="form-control"
+                    formControlName="aisle">
+            </div>
+            <div class="form-group col-12 col-md-3">
+                <label for="shelf">Shelf</label>
+                <input type="text" name="shelf" id="shelf" class="form-control"
+                    formControlName="shelf">
+            </div>
+            <div class="form-group col-12 col-md-3">
+                <label for="dateOfManufacture">Date Of Manufacture</label>
+                <input type="datetime" name="dateOfManufacture" id="datepicker" class="form-control"
+                    formControlName="dateOfManufacture">
+            </div>
+            <div class="form-group col-12 col-md-3">
+                <label for="dateOfExpiry">Date Of Expiry</label>
+                <input type="datetime" name="dateOfExpiry" id="dateOfExpiry" class="form-control"
+                    formControlName="dateOfExpiry">
+            </div>
+            
+            
+            <div class="form-group col-12 col-md-3">
+                <label for="addDate">Add Date</label>
+                <input type="datetime" name="addDate" id="addDate" class="form-control"
+                    formControlName="addDate">
+            </div>
+    
+           
+            
+        </div>
+  
+       <button type="submit" class="btn btn-danger">Save</button>
+    </form>
+    </div>

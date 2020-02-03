@@ -1,0 +1,83 @@
+<div class="sort">
+  <hr><b><h2>Products</h2></b><hr>
+</div>
+
+<div class="sort">
+  <b>Go To Category : </b><select (change)="getCategory($event)" [(ngModel)]="type">
+      <option value="Beauty">Beauty and Hygiene</option>
+      <option value="Snacks">Snacks & Branded Foods</option>
+      <option value="Cleaning">Cleaning & Household</option>
+  </select>
+</div>
+
+<div class="sort">
+  <span class="ml-3"><input type="checkbox" data-md-icheck (change)="selected($event)" />Sort By Price</span>
+  <span class="ml-3"><input type="checkbox" data-md-icheck (change)="selectedName($event)" />Sort By Name</span>
+  <span *ngIf="isAdmin()"><a [routerLink]="['/addProduct']" class="btn btn-sm buttons border-1 mt-1"
+      [routerLink]="['/addProduct']">
+      <i class="material-icons" style="vertical-align:middle;">add</i> Add Product
+    </a></span>
+</div>
+
+<div class="container my-3">
+  <div class="row" id="productInfo">
+    <div *ngFor="let product of productList">
+      <div class="card mt-4 ml-4 my-4 mx-4" style="width: 300px;height: 275px;">
+        <img src={{product.image}} class="card-img" id="card-image">
+        <div class="card-body">
+          <h6 class="card-title font-weight-normal">
+            <div class="d-flex ml-1 ">
+              <span id="name"><b>{{product.name}}</b></span>
+              <div class="ml-auto text-danger">
+                {{product.ratePerQuantity | currency : 'INR'}}
+              </div>
+              <!-- <div class="ml-auto text-danger" *ngIf="offerStatus">
+                <del>{{product.ratePerQuantity | currency : 'INR'}}</del>
+                {{product.ratePerQuantity - (product.ratePerQuantity * offer.discount/100)  | currency : 'INR'}}
+              </div> -->
+            </div>
+          </h6>
+          <div class="card-text">
+            <div class="row ml-1">
+              <!-- <span class="badge badge-success mr-1 active-badge" *ngIf="movie.active && isEditAllowed()">Active</span>
+                  <span class="badge badge-danger mr-1 active-badge" *ngIf="!movie.active && isEditAllowed()">Inactive</span> -->
+              <small class="text">Quantity : {{product.quantityType}}</small>
+              <small class="ml-auto mr-3"> <span>{{product.brand}}</span></small>
+            </div>
+            <div class="row ml-1">
+              <!-- <span class="badge badge-success mr-1 active-badge" *ngIf="movie.active && isEditAllowed()">Active</span>
+                  <span class="badge badge-danger mr-1 active-badge" *ngIf="!movie.active && isEditAllowed()">Inactive</span> -->
+              <small class="text">Aisle : {{product.aisle}}</small>
+              <small class="ml-auto mr-3">Shelf :  <span>{{product.shelf}}</span></small>
+            </div>
+          </div>
+          <div class="card-text">
+            <!-- <div class="row ml-1 alert alert-info mr-1" *ngIf="movieAdded">
+                  <small>Movie added successfully.</small>
+                </div> -->
+            <div class="row mt-2 ml-1">
+              <!-- <small class="text-muted ml-3" *ngIf="isEditAllowed()"> -->
+              <small><i class="material-icons" id="date">access_time</i>
+                Launch<div>{{product.addDate}}</div></small>
+              <!-- </small> -->
+              <div class="ml-auto mr-3" *ngIf="isAdmin()">
+                <a [routerLink]="['/modify',product.id]" class="btn btn-sm buttons border-0 mt-1"
+                  [routerLink]="['/modify',product.id]">
+                  <i class="material-icons" style="vertical-align:middle; font-size: 98%;">create</i> Edit
+                </a>
+                <a class="btn btn-sm buttons border-0 mt-1" (click)="deleteItem(product.id)">
+                  <i class="material-icons">delete_forever</i> Delete
+                </a>
+              </div>
+              <div class="ml-auto mr-3" *ngIf="!isAdmin()">
+                <a class="btn btn-sm buttons border-0 mt-1" (click)="addFavorite(product.id)">
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                </a>Add Rating
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

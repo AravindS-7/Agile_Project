@@ -1,0 +1,159 @@
+<div class=container mx-3>
+    <div class=container my-3>
+        <form [formGroup]="registerForm">
+
+            <div class="form-group">
+                <label for="firstName">First Name<span class="required">*</span> : </label>
+                <input type="text" class="form-control" placeholder="Enter first name" id="firstName"
+                    formControlName="firstName" required>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
+                    First Name is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name<span class="required">*</span> : </label>
+                <input type="text" class="form-control" placeholder="Enter last name" id="lastName"
+                    formControlName="lastName" required>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
+                    Last Name is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age<span class="required">*</span> : </label>
+                <input type="text" class="form-control" placeholder="Enter age" id="age" formControlName="age" required>
+                <div class="text-danger" *ngIf="registerForm.get('age').invalid && registerForm.get('age').touched">
+                    Age is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender<span class="required">*</span>:</label><br>
+                <input type="radio" name="gender" id="gender" formControlName="gender" value="Male" checked>Male
+                <input type="radio" name="gender" id="gender" formControlName="gender" value="Female">Female<br>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('gender').invalid && registerForm.get('gender').touched">
+                    Gender is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="contactNumber">Contact Number<span class="required">*</span> : </label>
+                <input type="text" class="form-control" placeholder="Enter Contact Number" id="contactNumber"
+                    formControlName="contactNumber" required>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('contactNumber').invalid && registerForm.get('contactNumber').touched">
+                    Contact Number is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="userId">User ID<span class="required">*</span> : </label>
+                <input type="text" class="form-control" placeholder="Enter User ID" id="userId" formControlName="userId"
+                    required>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('userId').invalid && registerForm.get('userId').touched">
+                    User Id is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password<span class="required">*</span> : </label>
+                <input type="password" class="form-control" placeholder="Enter Password" id="password"
+                    formControlName="password" required>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">
+                    Password is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="userType">User Type<span class="required">*</span>:</label><br>
+                <input type="radio" name="userType" id="userType" formControlName="userType" value="A" checked>Manager
+                <input type="radio" name="userType" id="userType" formControlName="userType" value="U">User <br>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('userType').invalid && registerForm.get('userType').touched">
+                    User Type is required
+                </div>
+            </div>
+
+            <!-- <div class="form-group">
+        <label for="status">Status : </label>
+    </div> -->
+
+            <div class="form-group">
+                <label for="secretQuestion1">Secret Question 1<span class="required">*</span> : </label>
+                <select id="secretQuestion1" class="form-control" formControlName="secretQuestion1">
+                    <option selected>What is your favorite movie?</option>
+                    <option>Who is your favorite actor?</option>
+                    <option>What is your favorite sports?</option>
+                </select>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('secretQuestion1').invalid && registerForm.get('secretQuestion1').touched">
+                    Secret Question 1 is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                Secret Answer<span class="required">*</span> : <input type="text" class="form-control"
+                    id="secretAnswer1" formControlName="secretAnswer1">
+                <div class="text-danger"
+                    *ngIf="registerForm.get('secretAnswer1').invalid && registerForm.get('secretAnswer1').touched">
+                    Secret Answer is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="secretQuestion2">Secret Question 2<span class="required">*</span> : </label>
+                <select id="secretQuestion2" class="form-control" formControlName="secretQuestion2">
+                    <option selected>What is your dog's name?</option>
+                    <option>Who is your inspiration?</option>
+                    <option>What are your hobbies?</option>
+                </select>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('secretQuestion2').invalid && registerForm.get('secretQuestion2').touched">
+                    Secret Question is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                Secret Answer<span class="required">*</span> : <input type="text" class="form-control"
+                    id="secretAnswer2" formControlName="secretAnswer2">
+                <div class="text-danger"
+                    *ngIf="registerForm.get('secretAnswer2').invalid && registerForm.get('secretAnswer2').touched">
+                    Secret Answer is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="secretQuestion3">Secret Question 3<span class="required">*</span> : </label>
+                <select id="secretQuestion3" class="form-control" formControlName="secretQuestion3">
+                    <option selected>What is your favorite food?</option>
+                    <option>Who is your school name?</option>
+                    <option>What is your special skills?</option>
+                </select>
+                <div class="text-danger"
+                    *ngIf="registerForm.get('secretQuestion3').invalid && registerForm.get('secretQuestion3').touched">
+                    Secret Question is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                Secret Answer<span class="required">*</span> : <input type="text" class="form-control"
+                    id="secretAnswer3" formControlName="secretAnswer3">
+                <div class="text-danger"
+                    *ngIf="registerForm.get('secretAnswer3').invalid && registerForm.get('secretAnswer3').touched">
+                    Secret Answer is required
+                </div>
+            </div>
+
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                <button type="submit" class="btn btn-primary buttons border-0" (click)="onSubmit()"
+                    [disabled]="!registerForm.valid">Register</button>
+            </div>
+        </form>
+    </div>
+</div>

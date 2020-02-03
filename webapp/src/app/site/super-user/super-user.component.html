@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="sort"><b><h2>List of Pending Users</h2></b></div>
+    <div class="col-sm-12 col-lg-6">
+        <div class="alert alert-dark" *ngIf="updatedStatus==='I'">
+          There are no pending requests
+        </div>
+        <div class="alert alert-success" *ngIf="updatedStatus==='A'">
+            Request accepted Successfully
+          </div>
+          <div class="alert alert-danger" *ngIf="updatedStatus==='D'">
+            Request denied Successfully
+          </div>
+    </div>
+    <div class="row">
+    <div *ngFor = "let user of pendingUsers">
+        <div class="card mt-4 ml-4" style="width: 300px;height: 150px;">
+            <div class="card-body">
+                <h6 class="card-title font-weight-normal ml-2">{{user.firstName}} {{user.lastName}}</h6>
+                <div class="card-text ml-2">Contact : {{user.contactNumber}}</div><br/>
+                <span class="form-group col-sm-12 col-md-6 col-lg-6">
+                    <button type="submit" class="btn btn-success buttons border-0" (click)="accept(user)"
+                        >Accept</button>
+                </span>
+                <span class="form-group col-sm-12 col-md-6 col-lg-6">
+                    <button type="submit" class="btn btn-danger buttons border-0" (click)="decline(user)"
+                        >Decline</button>
+                </span>
+    </div>
+</div>
+</div>
+</div>

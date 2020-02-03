@@ -1,0 +1,71 @@
+<div class="sort"><hr><h2><b>Billing Section</b></h2><hr></div>
+<div class="container my-3">
+  <div class="sort">
+    <span class="ml-3"><b>Enter Contact Number : </b><input type="text" name="contactNumber" placeholder="Contact Number" [(ngModel)]="contactNumber"></span>
+    <span class="ml-3"><button class="btn btn-primary" (click)="getUser(contactNumber)">Find User</button></span>
+    <p class="sort">User : <b>{{firstName}} {{lastName}}</b></p>
+  </div>
+<div class="sort">
+    <b>Select Category : </b><select (change)="getCategory($event)" [(ngModel)]="type">
+        <option  value="Beauty">Beauty and Hygiene</option>
+        <option value="Snacks">Snacks & Branded Foods</option>
+        <option value="Cleaning">Cleaning & Household</option>
+    </select>
+</div>
+<br/>
+    <div class="sort">
+        <form [formGroup]="billForm" (submit)="onSubmit(billForm)">
+            <div class="row">   
+                <div class="form-group col-md-3" id="form-group">
+                    <b>Quantity : </b>
+                  <input type="text" id="quantity" class="form-control" formControlName="quantity">
+                </div>
+                <div class="form-group col-md-3" id="form-group">
+                    <b>Rate Per Quantity : </b>
+                  <input type="text" id="ratePerQuantity" class="form-control" formControlName="ratePerQuantity" value="{{product.ratePerQuantity}}">
+                </div>
+              </div>
+              <!-- <button type="submit" class="btn btn-primary buttons border-0 ml-auto">Generate Bill</button>  -->
+      </form>
+</div>
+ <br/>
+ <div class="container my-3">
+  <div class="row" id="productInfo">
+    <div *ngFor="let product of productList">
+      <div class="card mt-4 ml-4 my-4 mx-4" style="width: 300px;height: 250px;">
+        <img src={{product.image}} class="card-img mt-1" id="card-image">
+        <div class="card-body">
+          <h6 class="card-title font-weight-normal">
+            <div class="d-flex ml-1 ">
+              <span id="name"><b>{{product.name}}</b></span>
+              <div class="ml-auto text-danger" *ngIf="!offerStatus">
+                {{product.ratePerQuantity | currency : 'INR'}}
+              </div>
+              <div class="ml-auto text-danger" *ngIf="offerStatus">
+                <del>{{product.ratePerQuantity | currency : 'INR'}}</del>
+                {{product.ratePerQuantity - (product.ratePerQuantity * offer.discount/100)  | currency : 'INR'}}
+              </div>
+            </div>
+          </h6>
+          <div class="card-text">
+            <div class="row ml-1">
+              <small class="text">Quantity : {{product.quantityType}}</small>
+              <small class="ml-auto mr-3"> <span>Stock : {{product.stockCount}}</span></small>
+            </div>
+            <div class=" row mr-1">
+              <button type="submit" class="btn btn-primary buttons border-0 ml-auto" (click)="onAddProduct(product.id)"><i class="material-icons">add</i></button> 
+            </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+        <div class="sort">
+          <a routerLink="/app-summary"><button class="btn btn-primary buttons border-0 ml-auto" >See Billing Summary</button></a>
+        </div>
+    <br/>
+
+   

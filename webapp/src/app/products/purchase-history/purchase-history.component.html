@@ -1,0 +1,24 @@
+<div class="sort">
+    <h3><b>Your Purchases</b></h3>
+</div>
+<br/>
+<div class="container">
+    <table class="table table-hover" style="width: 500px;margin: auto;">
+      <thead>
+        <tr>
+          <th scope="col">Purchase Date</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bill of bills">
+          <td>{{bill.billDate}}</td>
+          <td>{{bill.product.name}}</td>
+          <td>{{bill.quantity}}</td>
+          <td>{{bill.quantity * bill.product.ratePerQuantity}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
